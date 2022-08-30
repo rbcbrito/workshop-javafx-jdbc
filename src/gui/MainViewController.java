@@ -27,21 +27,23 @@ public class MainViewController implements Initializable{
 	@FXML
 	private MenuItem menuItemAbout;
 	
+	//executa o escopo quando o menu Seller for clicado
 	@FXML
 	public void onMenuItemSellerAction() {
 		System.out.println("onMenuItemSellerAction");
 	}
 	
+	//executa o escopo quando o menu Department for clicado
 	@FXML
 	public void onMenuItemDepartmentAction() {
 		loadView("/gui/DepartmentList.fxml");
 	}
 	
+	//executa o escopo quando o menu About for clicado
 	@FXML
 	public void onMenuItemAboutAction() {
 		loadView("/gui/About.fxml");
 	}
-	
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -53,12 +55,16 @@ public class MainViewController implements Initializable{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox newVBox = loader.load();
 			
+			//recebe o MainScener da classe Main
 			Scene mainScene = Main.getMainScene();
 			
+			//A variavel mainVBox recebe o content do MainScene
 			VBox mainVBox = (VBox) ((ScrollPane) mainScene.getRoot()).getContent();
 			
+			//A variavel mainMenu recebe o primeiro children do MainScene
 			Node mainMenu = mainVBox.getChildren().get(0);
 			
+			//limpa os childrens do mainScene, adiciona o children mainMenu do MainScene e adiciona os childrens do NewVBox
 			mainVBox.getChildren().clear();
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVBox.getChildren());

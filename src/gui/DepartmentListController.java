@@ -27,6 +27,7 @@ public class DepartmentListController implements Initializable{
 	@FXML
 	private Button btNew;
 	
+	//executa o escopo quando o botão New foi clicado
 	@FXML
 	public void onBtNewAction() {
 		System.out.println("OnBtNewAction");
@@ -38,8 +39,11 @@ public class DepartmentListController implements Initializable{
 	}
 
 	private void initializeNodes() {
+		//Faz as colunas da tableview iniciarem assim que o programa começar
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		
+		//faz com que a tableview acompanhe o tamanho da janela, até no redimensionamento
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());
 	}
